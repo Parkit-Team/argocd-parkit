@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: analysis-service
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Parkit-Team/argocd-parkit.git
+    targetRevision: main
+    path: analysis-service        # 이 경로 안의 매니페스트를 배포
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: parkit             # deployment.yaml의 namespace와 일치
+  syncPolicy:
+    automated:
+      prune: true                 # 삭제된 리소스 자동 정리
+      selfHeal: true              # 누군가 클러스터 직접 수정하면 되돌림
