@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socket-service        
+  namespace: parkit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socket-service     
+  template:
+    metadata:
+      labels:
+        app: socket-service   
+    spec:
+      containers:
+      - name: socket-service  
+        image: parkitteam/socket-service:latest  
+        ports:
+        - containerPort: 8080 
