@@ -1,8 +1,45 @@
-# Rewrite needed services (Socket, Report)
+# Web / Monitoring (no rewrite)
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: parkit-rewrite-ingress
+  name: parkit-total-ingress
+  namespace: parkit
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: client-service
+            port:
+              number: 80
+      - path: /prometheus
+        pathType: Prefix
+        backend:
+          service:
+            name: prometheus
+            port:
+              number: 9090
+      - path: /grafana
+        pathType: Prefix
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000
+
+---
+
+# Service APIs (rewrite + CORS)
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: parkit-service-ingress
   namespace: parkit
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
@@ -34,40 +71,3 @@ spec:
             name: report-service
             port:
               number: 8083
-
----
-
-# No rewrite needed services (React, Prometheus, Grafana)
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: parkit-direct-ingress
-  namespace: parkit
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-spec:
-  ingressClassName: nginx
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: client-service
-            port:
-              number: 80
-      - path: /prometheus(/|$)(.*)
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: prometheus
-            port:
-              number: 9090
-      - path: /grafana(/|$)(.*)
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: grafana
-            port:
-              number: 3000
