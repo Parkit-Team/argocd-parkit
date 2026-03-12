@@ -30,7 +30,7 @@ spec:
         - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
           value: "my-kafka:9092"
 
-        - name: SPRING_DATA_MONGODB_URI
+        - name: SPRING_MONGODB_URI
           value: "mongodb://mongodb:27017/parkit"
 
         - name: SPRING_REDIS_HOST
