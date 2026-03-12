@@ -33,6 +33,15 @@ spec:
   - metadata:
       name: mongodb-data
     spec:
+    volumeClaimTemplates:
+- metadata:
+    name: mongodb-data
+  spec:
+    accessModes: [ "ReadWriteOnce" ]
+    storageClassName: local-path   # 이 줄 추가
+    resources:
+      requests:
+        storage: 2Gi
       accessModes: [ "ReadWriteOnce" ]
       resources:
         requests:
