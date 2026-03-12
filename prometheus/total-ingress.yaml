@@ -6,6 +6,8 @@ metadata:
   namespace: parkit
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    # rewrite-target 추가 (경로 재작성을 위해 필요)
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   ingressClassName: nginx
   rules:
@@ -18,15 +20,17 @@ spec:
             name: client-service
             port:
               number: 80
-      - path: /prometheus
-        pathType: Prefix
+      # 프로메테우스 경로 수정
+      - path: /prometheus(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: prometheus
             port:
               number: 9090
-      - path: /grafana
-        pathType: Prefix
+      # 그라파나 경로 수정
+      - path: /grafana(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: grafana
