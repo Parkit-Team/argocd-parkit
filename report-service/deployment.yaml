@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: report-service
-        image: parkitteam/report-service:build-9
+        image: parkitteam/report-service:build-16
         ports:
         - containerPort: 8080
