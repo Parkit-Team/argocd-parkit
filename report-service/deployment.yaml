@@ -27,13 +27,11 @@ spec:
           value: "/report/v3/api-docs"
         - name: SPRINGDOC_SWAGGER_UI_DISABLE_SWAGGER_DEFAULT_URL
           value: "true"
-        - name: JAVA_TOOL_OPTIONS
-          value: "-Dspring.data.mongodb.uri=mongodb://admin:password@mongodb:27017/parkit?authSource=admin"
         - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
           value: "my-kafka:9092"
 
         - name: SPRING_DATA_MONGODB_URI
-          value: "mongodb://admin:password@mongodb:27017/parkit?authSource=admin"
+          value: "mongodb://mongodb:27017/parkit"
 
         - name: SPRING_REDIS_HOST
           value: "redis"
