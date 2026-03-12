@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: redis
-  namespace: parkit 
+  namespace: parkit
 spec:
   serviceName: redis
   replicas: 1
@@ -19,6 +19,13 @@ spec:
           image: redis:7
           ports:
             - containerPort: 6379
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "300m"
           volumeMounts:
             - name: redis-data
               mountPath: /data
