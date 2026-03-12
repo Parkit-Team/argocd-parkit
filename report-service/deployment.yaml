@@ -18,3 +18,15 @@ spec:
         image: parkitteam/report-service:build-16
         ports:
         - containerPort: 8080
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "my-kafka:9092"
+
+        - name: SPRING_DATA_MONGODB_URI
+          value: "mongodb://mongodb:27017/parkit"
+
+        - name: SPRING_REDIS_HOST
+          value: "redis"
+
+        - name: SPRING_REDIS_PORT
+          value: "6379"
