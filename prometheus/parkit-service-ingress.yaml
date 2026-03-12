@@ -1,4 +1,3 @@
-# parkit-service-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -7,6 +6,7 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2 
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-buffering: "off"
@@ -22,15 +22,13 @@ spec:
   rules:
   - http:
       paths:
-      # 1. 리액트 화면
-      - path: /
-        pathType: Prefix
+      - path: /()(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: client-service
             port:
               number: 80
-      # 2. 소켓 서비스
       - path: /socket(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
@@ -38,7 +36,6 @@ spec:
             name: socket-service
             port:
               number: 8082
-      # 3. 리포트 서비스
       - path: /report(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
