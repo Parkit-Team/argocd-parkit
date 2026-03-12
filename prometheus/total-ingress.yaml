@@ -57,15 +57,15 @@ spec:
             name: client-service
             port:
               number: 80
-      - path: /prometheus
-        pathType: Prefix
+      - path: /prometheus(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: prometheus
             port:
               number: 9090
-      - path: /grafana
-        pathType: Prefix
+      - path: /grafana(/|$)(.*)
+        pathType: ImplementationSpecific
         backend:
           service:
             name: grafana
