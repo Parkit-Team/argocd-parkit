@@ -1,41 +1,4 @@
-# Web / Monitoring (no rewrite)
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: parkit-total-ingress
-  namespace: parkit
-  annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-spec:
-  ingressClassName: nginx
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: client-service
-            port:
-              number: 80
-      - path: /prometheus
-        pathType: Prefix
-        backend:
-          service:
-            name: prometheus
-            port:
-              number: 9090
-      - path: /grafana(/|$)(.*)
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: grafana
-            port:
-              number: 3000
-
----
-
-# Service APIs (rewrite + CORS)
+# parkit-service-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -44,7 +7,6 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "50m"
     nginx.ingress.kubernetes.io/use-regex: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-buffering: "off"
@@ -60,6 +22,15 @@ spec:
   rules:
   - http:
       paths:
+      # 1. 리액트 화면
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: client-service
+            port:
+              number: 80
+      # 2. 소켓 서비스
       - path: /socket(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
@@ -67,6 +38,7 @@ spec:
             name: socket-service
             port:
               number: 8082
+      # 3. 리포트 서비스
       - path: /report(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
