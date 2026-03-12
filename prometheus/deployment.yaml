@@ -23,18 +23,6 @@ spec:
             - "--web.route-prefix=/"
           ports:
             - containerPort: 9090
-          livenessProbe:
-            httpGet:
-              path: /-/healthy
-              port: 9090
-            initialDelaySeconds: 30
-            periodSeconds: 15
-          readinessProbe:
-            httpGet:
-              path: /-/ready
-              port: 9090
-            initialDelaySeconds: 30
-            periodSeconds: 15
           volumeMounts:
             - name: config
               mountPath: /etc/prometheus/prometheus.yml
