@@ -19,6 +19,7 @@ data:
           - targets: ["prometheus:9090"]
             labels:
               app: "prometheus"
+        metrics_path: /prometheus/metrics
       - job_name: 'kafka'
         static_configs:
           - targets: ['10.111.214.84:9308']
