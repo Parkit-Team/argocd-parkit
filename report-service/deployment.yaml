@@ -21,6 +21,8 @@ spec:
         env:
         - name: SERVER_PORT
           value: "8083"
+        - name: JAVA_TOOL_OPTIONS
+          value: "-Dspring.data.mongodb.uri=mongodb://admin:password@mongodb:27017/parkit?authSource=admin"
         - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
           value: "my-kafka:9092"
 
