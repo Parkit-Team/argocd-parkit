@@ -56,4 +56,4 @@ spec:
   ports:
     - port: 9090
       targetPort: 9090
-      nodePort: 31985
+      # nodePort: 31985
