@@ -15,25 +15,25 @@ data:
     rule_files:
     scrape_configs:
       - job_name: "prometheus"
+        metrics_path: /prometheus/metrics
         static_configs:
           - targets: ["prometheus:9090"]
             labels:
               app: "prometheus"
-        metrics_path: /prometheus/metrics
       - job_name: 'kafka'
         static_configs:
-          - targets: ['10.111.214.84:9308']
+          - targets: ['my-kafka:9308']
       - job_name: 'analysis-service'
         metrics_path: /actuator/prometheus
         static_configs:
-          - targets: ['10.100.93.20:8081']
+          #- targets: ['analysis-service:8081']
       - job_name: 'socket-service'
         metrics_path: /actuator/prometheus
         static_configs:
-          - targets: ['10.102.138.204:8082']
+          - targets: ['socket-service:8082']
       - job_name: 'mongodb'
         static_configs:
-          - targets: ['10.100.238.161:9216']
+          - targets: ['mongodb:9216']
       - job_name: 'redis'
         static_configs:
-          - targets: ['10.106.176.177:9121']
+          - targets: ['redis:9121']
