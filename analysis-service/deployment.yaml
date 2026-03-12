@@ -15,6 +15,9 @@ spec:
     spec:
       containers:
       - name: analysis-service
-        image: parkitteam/analysis-service:build-25
+        image: parkitteam/analysis-service:build-27
         ports:
         - containerPort: 8080
+        env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: "kafka.parkit.svc.cluster.local:9092"
