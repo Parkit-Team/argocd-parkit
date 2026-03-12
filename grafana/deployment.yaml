@@ -27,7 +27,12 @@ spec:
         - name: config
           mountPath: /etc/grafana/grafana.ini
           subPath: grafana.ini
+        - name: grafana-storage
+          mountPath: /var/lib/grafana
       volumes:
       - name: config
         configMap:
           name: grafana-config
+      - name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana-pvc
