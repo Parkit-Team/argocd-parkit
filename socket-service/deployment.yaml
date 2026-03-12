@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: socket-service  
-        image: parkitteam/socket-service:build-17
+        image: parkitteam/socket-service:build-18
         ports:
         - containerPort: 8080 
