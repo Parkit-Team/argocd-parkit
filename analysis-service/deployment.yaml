@@ -21,3 +21,5 @@ spec:
         env:
         - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
           value: "my-kafka:9092"
+        - name: SPRING_DATA_MONGODB_URI
+          value: "mongodb://mongodb:27017/parkit"
