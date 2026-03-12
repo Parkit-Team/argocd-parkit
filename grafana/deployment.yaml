@@ -23,11 +23,11 @@ spec:
           value: http://192.168.201.98:50030/grafana/
         - name: GF_SERVER_SERVE_FROM_SUB_PATH
           value: "true"
-        volumeMounts:
-        - name: config
-          mountPath: /etc/grafana/grafana.ini
-          subPath: grafana.ini
-      volumes:
-      - name: config
-        configMap:
-          name: grafana-config
+        #volumeMounts:
+        #- name: config
+          #mountPath: /etc/grafana/grafana.ini
+          #subPath: grafana.ini
+      #volumes:
+      #- name: config
+        #configMap:
+          #name: grafana-config
