@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/your-repo/argocd-parkit.git
+    repoURL: https://github.com/Parkit-Team/argocd-parkit.git
     targetRevision: HEAD
     path: redis
 
