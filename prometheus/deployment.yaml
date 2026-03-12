@@ -19,7 +19,7 @@ spec:
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
-            - "--web.external-url=http://192.168.201.98:31985/prometheus/"
+            - "--web.external-url=http://192.168.201.98:50030/prometheus/"
             - "--web.route-prefix=/"
           ports:
             - containerPort: 9090
