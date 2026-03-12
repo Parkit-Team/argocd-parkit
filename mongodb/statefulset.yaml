@@ -29,12 +29,14 @@ spec:
         volumeMounts:
         - name: mongodb-data
           mountPath: /data/db
-  volumeClaimTemplates:
-  - metadata:
-      name: mongodb-data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: local-path   # 이 줄 추가
-      resources:
-        requests:
-          storage: 2Gi
+      volumeClaimTemplates:
+      - metadata:
+          name: mongodb-data
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          storageClassName: local-path
+          resources:
+            requests:
+              storage: 2Gi
+
+# 3. 저장 및 종료 (Ctrl + O 누르고 엔터, 그다음 Ctrl + X)
