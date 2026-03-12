@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: analysis-service
-        image: parkitteam/analysis-service:build-51
+        image: parkitteam/analysis-service:build-56
         ports:
         - containerPort: 8081
         resources:
