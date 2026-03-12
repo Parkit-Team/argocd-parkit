@@ -30,3 +30,9 @@ data:
         metrics_path: /actuator/prometheus
         static_configs:
           - targets: ['10.102.138.204:8082']
+      - job_name: 'mongodb'
+        static_configs:
+          - targets: ['10.100.238.161:9216']
+      - job_name: 'redis'
+        static_configs:
+          - targets: ['10.106.176.177:9121']
