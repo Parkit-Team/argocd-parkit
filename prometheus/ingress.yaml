@@ -4,13 +4,14 @@ metadata:
   name: prometheus-ingress
   namespace: parkit
   annotations:
+    kubernetes.io/ingress.class: "nginx" 
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx # 이 줄을 추가하세요!
+  ingressClassName: nginx 
   rules:
   - http:
       paths:
-      - path: /
+      - path: /prometheus
         pathType: Prefix
         backend:
           service:
