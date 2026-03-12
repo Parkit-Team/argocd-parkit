@@ -1,10 +1,12 @@
-# parkit-monitoring-ingress.yaml
+# parkit-total-ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: parkit-monitoring-ingress
+  name: parkit-total-ingress
   namespace: parkit
   annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: nginx
