@@ -19,10 +19,22 @@ spec:
           args:
             - "--config.file=/etc/prometheus/prometheus.yml"
             - "--storage.tsdb.path=/prometheus/"
-            - "--web.external-url=http://192.168.201.98:50030/prometheus/"
+            - "--web.external-url=http://192.168.201.98:31985/prometheus/"
             - "--web.route-prefix=/"
           ports:
             - containerPort: 9090
+          livenessProbe:
+            httpGet:
+              path: /-/healthy
+              port: 9090
+            initialDelaySeconds: 30
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9090
+            initialDelaySeconds: 30
+            periodSeconds: 15
           volumeMounts:
             - name: config
               mountPath: /etc/prometheus/prometheus.yml
@@ -44,4 +56,4 @@ spec:
   ports:
     - port: 9090
       targetPort: 9090
-      nodePort: 30859
+      nodePort: 31985
