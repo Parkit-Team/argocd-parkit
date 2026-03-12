@@ -23,7 +23,7 @@ spec:
           value: "my-kafka:9092"
 
         - name: SPRING_DATA_MONGODB_URI
-          value: "mongodb://mongodb:27017/parkit"
+          value: "mongodb://admin:password@mongodb:27017/parkit?authSource=admin"
 
         - name: SPRING_REDIS_HOST
           value: "redis"
