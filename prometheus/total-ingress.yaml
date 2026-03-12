@@ -20,17 +20,15 @@ spec:
             name: client-service
             port:
               number: 80
-      # 프로메테우스 경로 수정
-      - path: /prometheus(/|$)(.*)
-        pathType: ImplementationSpecific
+      - path: /prometheus
+        pathType: Prefix
         backend:
           service:
             name: prometheus
             port:
               number: 9090
-      # 그라파나 경로 수정
-      - path: /grafana(/|$)(.*)
-        pathType: ImplementationSpecific
+      - path: /grafana
+        pathType: Prefix
         backend:
           service:
             name: grafana
