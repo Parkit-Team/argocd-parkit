@@ -17,8 +17,10 @@ spec:
       - name: report-service
         image: parkitteam/report-service:build-16
         ports:
-        - containerPort: 8080
+        - containerPort: 8083
         env:
+        - name: SERVER_PORT
+          value: "8083"
         - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
           value: "my-kafka:9092"
 

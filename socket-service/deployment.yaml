@@ -17,7 +17,9 @@ spec:
       - name: socket-service  
         image: parkitteam/socket-service:build-36
         ports:
-        - containerPort: 8080 
+        - containerPort: 8082 
         env:
+        - name: SERVER_PORT
+          value: "8082"
         - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
           value: "my-kafka:9092"
