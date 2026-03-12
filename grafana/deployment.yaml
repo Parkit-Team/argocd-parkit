@@ -23,18 +23,6 @@ spec:
           value: http://192.168.201.98:50030/grafana
         - name: GF_SERVER_SERVE_FROM_SUB_PATH
           value: "true"
-        readinessProbe:
-          httpGet:
-            path: /api/health
-            port: 3000
-          initialDelaySeconds: 120
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /api/health
-            port: 3000
-          initialDelaySeconds: 120
-          periodSeconds: 10
         #volumeMounts:
         #- name: config
           #mountPath: /etc/grafana/grafana.ini
