@@ -13,28 +13,28 @@ data:
       - job_name: "prometheus"
         metrics_path: /metrics  
         static_configs:
-          - targets: ["prometheus:9090"]
+          - targets: ["localhost:9090"]
             labels:
               app: "prometheus"
 
       - job_name: 'kafka'
         static_configs:
-          - targets: ['my-kafka:9308']
+          - targets: ['10.100.254.144:9308']
 
       - job_name: 'analysis-service'
         metrics_path: /actuator/prometheus
         static_configs:
-          - targets: ['analysis-service:8081']
+          - targets: ['10.100.93.20:8081']
 
       - job_name: 'socket-service'
         metrics_path: /actuator/prometheus
         static_configs:
-          - targets: ['socket-service:8082']
+          - targets: ['10.102.138.204:8082']
 
       - job_name: 'mongodb'
         static_configs:
-          - targets: ['mongodb:9216']
+          - targets: ['10.103.82.199:9216']
 
       - job_name: 'redis'
         static_configs:
-          - targets: ['redis:9121']
+          - targets: ['10.110.172.221:9121']
