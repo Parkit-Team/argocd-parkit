@@ -24,8 +24,8 @@ spec:
             port:
               number: 9090
       # 2. 그라파나
-      - path: /grafana(/|$)(.*)
-        pathType: ImplementationSpecific
+      - path: /grafana
+        pathType: Prefix
         backend:
           service:
             name: grafana
