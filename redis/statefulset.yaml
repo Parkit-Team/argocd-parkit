@@ -33,6 +33,16 @@ spec:
             - "redis-server"
             - "--appendonly"
             - "yes"
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          readinessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 5
+            periodSeconds: 10
 
   volumeClaimTemplates:
     - metadata:
