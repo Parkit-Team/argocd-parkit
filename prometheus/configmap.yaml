@@ -8,7 +8,7 @@ data:
     global:
       scrape_interval: 15s
       evaluation_interval: 15s
-      scrape_timeout: 30s
+      scrape_timeout: 10s
 
     scrape_configs:
       - job_name: "prometheus"
@@ -19,7 +19,7 @@ data:
               app: "prometheus"
 
       - job_name: 'kafka'
-        scrape_timeout: 30s
+        scrape_interval: 60s
         static_configs:
           - targets: ['kafka-exporter-prometheus-kafka-exporter:9308']
 
@@ -34,7 +34,7 @@ data:
           - targets: ['socket-service:8082']
 
       - job_name: 'mongodb'
-        scrape_timeout: 30s
+        scrape_interval: 60s
         static_configs:
           - targets: ['mongodb-exporter:9216']
 
