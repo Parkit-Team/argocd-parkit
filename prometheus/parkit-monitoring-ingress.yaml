@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/proxy-redirect-from: "http://192.168.201.98:50030/"
-    nginx.ingress.kubernetes.io/proxy-redirect-to: "http://192.168.201.98:50030/grafana/"
+    nginx.ingress.kubernetes.io/proxy-redirect-to: "http://192.168.201.98:50030/"
 spec:
   ingressClassName: nginx
   rules:
