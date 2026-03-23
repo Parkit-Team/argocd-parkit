@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: client-service
-        image: parkitteam/client-service:build-54
+        image: parkitteam/client-service:build-55
         ports:
         - containerPort: 80
