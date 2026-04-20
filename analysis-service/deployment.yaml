@@ -19,7 +19,7 @@ spec:
         command: ['sh', '-c', 'until nc -z redis 6379; do echo waiting for redis; sleep 2; done']
       containers:
       - name: analysis-service
-        image: parkitteam/analysis-service:build-96
+        image: parkitteam/analysis-service:build-98
         ports:
         - containerPort: 8081
         resources:
