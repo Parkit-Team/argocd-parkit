@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: report-service
-        image: parkitteam/report-service:build-67
+        image: parkitteam/report-service:build-72
         ports:
         - containerPort: 8083
         env:
