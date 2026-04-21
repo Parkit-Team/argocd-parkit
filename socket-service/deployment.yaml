@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: socket-service  
-        image: parkitteam/socket-service:build-93
+        image: parkitteam/socket-service:build-94
         ports:
         - containerPort: 8082 
         env:
